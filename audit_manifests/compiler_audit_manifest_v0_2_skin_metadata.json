@@ -1,0 +1,23 @@
+{
+  "compiler_version": "0.2_metadata_manifest",
+  "compiled_manifests": {
+    "skin_multiclass_7_ham10000_isic2019": "data/compiled_manifests/skin_multiclass_7_ham10000_isic2019_manifest.csv",
+    "skin_binary_melanoma_isic2020": "data/compiled_manifests/skin_binary_melanoma_isic2020_manifest.csv",
+    "skin_fitzpatrick17k_external_stress": "data/compiled_manifests/skin_fitzpatrick17k_external_stress_manifest.csv",
+    "skin_all_compiled_metadata_manifest": "data/compiled_manifests/skin_all_compiled_metadata_manifest.csv"
+  },
+  "decision_logic": {
+    "HAM10000_ISIC2019": "accepted for 7-class mapping after excluding ISIC2019 SCC and UNK extension labels",
+    "ISIC2020": "accepted as binary melanoma-only task, not directly pooled with 7-class datasets",
+    "Fitzpatrick17k": "rejected for direct dermoscopy pooling; reserved for external stress/coarse mapping because it is broad dermatology"
+  },
+  "counts": {
+    "multiclass_manifest_rows": 35346,
+    "multiclass_accepted_7class_rows": 34718,
+    "multiclass_flagged_extension_rows": 628,
+    "isic2020_binary_rows": 33126,
+    "fitzpatrick_rows": 16577,
+    "fitzpatrick_mapped_overlap_rows": 1751,
+    "fitzpatrick_rejected_direct_pooling_rows": 14826
+  }
+}

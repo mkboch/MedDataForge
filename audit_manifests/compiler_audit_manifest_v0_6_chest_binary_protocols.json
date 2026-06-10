@@ -1,0 +1,16 @@
+{
+  "compiler_version": "0.6_chest_binary_stress_protocols",
+  "seed": 20260602,
+  "files": {
+    "C1_train_pneumonia_test_covid_viral": "data/training_splits/chest/C1_train_pneumonia_test_covid_viral.csv",
+    "C2_compiler_compatible_binary_pool": "data/training_splits/chest/C2_compiler_compatible_binary_pool.csv",
+    "C3_naive_binary_pool_all_abnormal_as_pneumonia": "data/training_splits/chest/C3_naive_binary_pool_all_abnormal_as_pneumonia.csv"
+  },
+  "summary_file": "results/tables/chest_binary_stress_protocol_summary.csv",
+  "decisions_file": "results/tables/chest_binary_stress_protocol_decisions.csv",
+  "row_counts": {
+    "C1": 23249,
+    "C2": 23249,
+    "C3": 32877
+  }
+}

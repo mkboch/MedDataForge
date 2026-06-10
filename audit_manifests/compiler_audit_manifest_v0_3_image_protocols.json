@@ -1,0 +1,17 @@
+{
+  "compiler_version": "0.3_image_linked_protocols",
+  "image_counts": {
+    "HAM10000": 10015,
+    "ISIC2019": 25331,
+    "total_indexed": 35346
+  },
+  "manifest_rows": 35346,
+  "linked_rows": 35346,
+  "found_image_rows": 35346,
+  "missing_image_rows": 0,
+  "accepted_7class_rows": 34718,
+  "flagged_extension_rows": 628,
+  "protocol_file": "data/compiled_protocols/skin_multiclass_7_protocols.csv",
+  "linked_manifest_file": "data/compiled_protocols/skin_multiclass_7_linked_manifest.csv",
+  "image_index_file": "data/compiled_protocols/skin_image_index.csv"
+}

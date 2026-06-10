@@ -1,0 +1,142 @@
+{
+  "compiler_version": "0.1_metadata_only",
+  "inputs": {
+    "chestxray8": "data/metadata_raw_clean/ChestX-ray8/Data_Entry_2017_v2020.csv",
+    "fitzpatrick17k": "data/metadata_raw_clean/Fitzpatrick_17k/fitzpatrick17k.csv",
+    "ham10000": "data/metadata_raw_clean/HAM10000/HAM10000_metadata.tab",
+    "isic2019_gt": "data/metadata_raw_clean/ISIC/ISIC_2019_Training_GroundTruth.csv",
+    "isic2019_meta": "data/metadata_raw_clean/ISIC/ISIC_2019_Training_Metadata.csv",
+    "isic2020_gt_v2": "data/metadata_raw_clean/ISIC/ISIC_2020_Training_GroundTruth_v2.csv"
+  },
+  "datasets_profiled": {
+    "ChestX-ray8": {
+      "rows": 112120,
+      "label_space": "multi-label thoracic findings",
+      "labels": [
+        "atelectasis",
+        "cardiomegaly",
+        "consolidation",
+        "edema",
+        "emphysema",
+        "fibrosis",
+        "hernia",
+        "infiltration",
+        "mass",
+        "no_finding",
+        "nodule",
+        "pleural_effusion",
+        "pleural_thickening",
+        "pneumonia",
+        "pneumothorax"
+      ]
+    },
+    "HAM10000": {
+      "rows": 10015,
+      "label_space": "7-class skin lesion diagnosis",
+      "labels": [
+        "actinic_keratosis_or_intraepithelial_carcinoma",
+        "basal_cell_carcinoma",
+        "benign_keratosis_like_lesion",
+        "dermatofibroma",
+        "melanocytic_nevus",
+        "melanoma",
+        "vascular_lesion"
+      ]
+    },
+    "ISIC2019": {
+      "rows": 25331,
+      "label_space": "one-hot skin lesion diagnosis with SCC/UNK extension",
+      "labels": [
+        "actinic_keratosis_or_intraepithelial_carcinoma",
+        "basal_cell_carcinoma",
+        "benign_keratosis_like_lesion",
+        "dermatofibroma",
+        "melanocytic_nevus",
+        "melanoma",
+        "squamous_cell_carcinoma",
+        "unknown",
+        "vascular_lesion"
+      ]
+    },
+    "ISIC2020": {
+      "rows": 33126,
+      "label_space": "binary melanoma target plus diagnosis metadata",
+      "labels": [
+        "melanoma",
+        "non_melanoma",
+        "non_melanoma_or_other"
+      ]
+    },
+    "Fitzpatrick17k": {
+      "rows": 16577,
+      "label_space": "broad dermatology labels plus coarse partitions",
+      "labels_mapped_to_skin7_or_related": [
+        "actinic_keratosis_or_intraepithelial_carcinoma",
+        "basal_cell_carcinoma",
+        "benign",
+        "benign_dermal",
+        "benign_epidermal",
+        "benign_keratosis_like_lesion",
+        "benign_melanocyte",
+        "dermatofibroma",
+        "genodermatoses",
+        "inflammatory",
+        "malignant",
+        "malignant_cutaneous_lymphoma",
+        "malignant_dermal",
+        "malignant_epidermal",
+        "malignant_melanoma",
+        "melanoma",
+        "non-neoplastic",
+        "squamous_cell_carcinoma"
+      ]
+    }
+  },
+  "compiled_experiment_decisions": [
+    {
+      "experiment_id": "skin_multiclass_7_ham10000_isic2019",
+      "domain": "skin_lesion",
+      "candidate_datasets": "HAM10000;ISIC2019",
+      "compiler_decision": "accept_with_label_mapping",
+      "target_label_space": "7-class HAM10000/ISIC-style diagnostic labels",
+      "shared_label_count": 7,
+      "warning": "ISIC2019 includes SCC and UNK beyond HAM10000 7-class space; compiler must reject/drop or map separately."
+    },
+    {
+      "experiment_id": "skin_binary_melanoma_isic2020",
+      "domain": "skin_lesion",
+      "candidate_datasets": "ISIC2020",
+      "compiler_decision": "accept_binary_task_only",
+      "target_label_space": "melanoma vs non-melanoma",
+      "shared_label_count": 2,
+      "warning": "Not directly compatible with 7-class multi-class datasets without collapsing labels."
+    },
+    {
+      "experiment_id": "skin_fitzpatrick17k_to_isic_ham",
+      "domain": "skin_lesion",
+      "candidate_datasets": "Fitzpatrick17k;HAM10000;ISIC2019",
+      "compiler_decision": "reject_for_direct_pooling",
+      "target_label_space": "diagnostic labels",
+      "shared_label_count": "",
+      "warning": "Fitzpatrick17k is broad clinical dermatology and not a dermoscopy-only 7-class lesion benchmark; use for external stress test or coarse malignant/benign/non-neoplastic mapping only."
+    },
+    {
+      "experiment_id": "chest_multilabel_nih_only",
+      "domain": "chest_xray",
+      "candidate_datasets": "ChestX-ray8",
+      "compiler_decision": "accept_single_dataset_baseline",
+      "target_label_space": "15 NIH finding labels including No Finding",
+      "shared_label_count": 15,
+      "warning": "Cross-dataset experiment requires Kaggle or credentialed datasets such as CheXpert/MIMIC/PadChest/VinDr."
+    },
+    {
+      "experiment_id": "chest_cross_dataset_future_core",
+      "domain": "chest_xray",
+      "candidate_datasets": "ChestX-ray8;CheXpert;MIMIC-CXR-JPG;PadChest;VinDr-PCXR",
+      "compiler_decision": "defer_until_access_available",
+      "target_label_space": "shared thoracic finding labels",
+      "shared_label_count": "",
+      "warning": "Core compatible external datasets are currently gated/manual; this is a fragmentation finding and access-priority target."
+    }
+  ]
+}

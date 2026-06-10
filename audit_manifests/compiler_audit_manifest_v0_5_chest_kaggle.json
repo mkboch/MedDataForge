@@ -1,0 +1,37 @@
+{
+  "compiler_version": "0.5_chest_kaggle_manifest",
+  "datasets": {
+    "chest_xray_pneumonia": {
+      "images": 11712,
+      "labels": {
+        "pneumonia": 8546,
+        "normal": 3166
+      }
+    },
+    "covid19_radiography": {
+      "images": 21165,
+      "labels": {
+        "normal": 10192,
+        "lung_opacity": 6012,
+        "covid_19": 3616,
+        "viral_pneumonia": 1345
+      }
+    },
+    "indiana_chest_xrays": {
+      "images": 7470,
+      "metadata": {
+        "projection_rows": 7466,
+        "report_rows": 3851,
+        "images_with_report": 7466
+      }
+    }
+  },
+  "output_files": {
+    "all_manifest": "data/compiled_manifests/chest_kaggle_all_compiled_manifest.csv",
+    "pneumonia_manifest": "data/compiled_manifests/chest_binary_pneumonia_manifest.csv",
+    "covid_manifest": "data/compiled_manifests/chest_covid_radiography_multiclass_manifest.csv",
+    "indiana_manifest": "data/compiled_manifests/chest_indiana_report_image_manifest.csv",
+    "decisions": "results/tables/chest_compiler_decisions.csv",
+    "label_counts": "results/tables/chest_compiled_label_counts.csv"
+  }
+}

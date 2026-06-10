@@ -1,0 +1,71 @@
+{
+  "split_compiler_version": "0.4_training_splits",
+  "seed": 20260528,
+  "outputs": {
+    "P1_train_ham_validate_ham_test_isic": {
+      "path": "data/training_splits/P1_train_ham_validate_ham_test_isic.csv",
+      "rows": 34718,
+      "image_paths_found": 34718,
+      "image_paths_missing": 0,
+      "num_classes": 7,
+      "classes": [
+        "actinic_keratosis_or_intraepithelial_carcinoma",
+        "basal_cell_carcinoma",
+        "benign_keratosis_like_lesion",
+        "dermatofibroma",
+        "melanocytic_nevus",
+        "melanoma",
+        "vascular_lesion"
+      ]
+    },
+    "P2_train_isic_validate_isic_test_ham": {
+      "path": "data/training_splits/P2_train_isic_validate_isic_test_ham.csv",
+      "rows": 34718,
+      "image_paths_found": 34718,
+      "image_paths_missing": 0,
+      "num_classes": 7,
+      "classes": [
+        "actinic_keratosis_or_intraepithelial_carcinoma",
+        "basal_cell_carcinoma",
+        "benign_keratosis_like_lesion",
+        "dermatofibroma",
+        "melanocytic_nevus",
+        "melanoma",
+        "vascular_lesion"
+      ]
+    },
+    "P3_compiler_filtered_pool_7class": {
+      "path": "data/training_splits/P3_compiler_filtered_pool_7class.csv",
+      "rows": 34718,
+      "image_paths_found": 34718,
+      "image_paths_missing": 0,
+      "num_classes": 7,
+      "classes": [
+        "actinic_keratosis_or_intraepithelial_carcinoma",
+        "basal_cell_carcinoma",
+        "benign_keratosis_like_lesion",
+        "dermatofibroma",
+        "melanocytic_nevus",
+        "melanoma",
+        "vascular_lesion"
+      ]
+    },
+    "P4_naive_pool_including_flagged_8class": {
+      "path": "data/training_splits/P4_naive_pool_including_flagged_8class.csv",
+      "rows": 35346,
+      "image_paths_found": 35346,
+      "image_paths_missing": 0,
+      "num_classes": 8,
+      "classes": [
+        "actinic_keratosis_or_intraepithelial_carcinoma",
+        "basal_cell_carcinoma",
+        "benign_keratosis_like_lesion",
+        "dermatofibroma",
+        "melanocytic_nevus",
+        "melanoma",
+        "squamous_cell_carcinoma",
+        "vascular_lesion"
+      ]
+    }
+  }
+}
